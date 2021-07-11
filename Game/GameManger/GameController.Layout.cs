@@ -13,8 +13,8 @@ namespace Game.GameManger
         private int Counter = 0;
         private ScorePanel _scorePanel;
         private Form _view;
-        private NationalityPanel _JapanesPanel;
-        private NationalityPanel _ChinesPanel;
+        private NationalityPanel _JapanesePanel;
+        private NationalityPanel _ChinesePanel;
         private NationalityPanel _KoreanPanel;
         private NationalityPanel _ThaiPanel;
         private int ViewHeight = 763;
@@ -32,18 +32,18 @@ namespace Game.GameManger
 
             //adjust controls
             _scorePanel = new ScorePanel();
-            _JapanesPanel = new NationalityPanel();
-            _JapanesPanel.Location = new Point(0, 0);
-            _JapanesPanel.NationalityText = "Japanes";
-            _ChinesPanel = new NationalityPanel();
-            _ChinesPanel.NationalityText = "Chines";
-            _ChinesPanel.Location = new Point(ViewWidth - _ChinesPanel.Width, 0);
+            _JapanesePanel = new NationalityPanel();
+            _JapanesePanel.Location = new Point(0, 0);
+            _JapanesePanel.NationalityText = "Japanese";
+            _ChinesePanel = new NationalityPanel();
+            _ChinesePanel.NationalityText = "Chinese";
+            _ChinesPanel.Location = new Point(ViewWidth - _ChinesePanel.Width, 0);
             _KoreanPanel = new NationalityPanel();
             _KoreanPanel.NationalityText = "Korean";
             _KoreanPanel.Location = new Point(0, ViewHeight - (88 + _KoreanPanel.Height));
             _ThaiPanel = new NationalityPanel();
             _ThaiPanel.NationalityText = "Thai";
-            _ThaiPanel.Location = new Point(ViewWidth - _ChinesPanel.Width, ViewHeight - (88 + _KoreanPanel.Height));
+            _ThaiPanel.Location = new Point(ViewWidth - _ChinesePanel.Width, ViewHeight - (88 + _KoreanPanel.Height));
 
             imageBoxControl = new ImageBoxControl(iMotionDriver,imageAnimation);
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxControl)).BeginInit();
@@ -64,8 +64,8 @@ namespace Game.GameManger
         {
             _view.Controls.Add(imageBoxControl);
             _view.Controls.Add(_scorePanel);
-            _view.Controls.Add(_JapanesPanel);
-            _view.Controls.Add(_ChinesPanel);
+            _view.Controls.Add(_JapanesePanel);
+            _view.Controls.Add(_ChinesePanel);
             _view.Controls.Add(_KoreanPanel);
             _view.Controls.Add(_ThaiPanel);
            
