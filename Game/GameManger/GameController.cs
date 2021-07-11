@@ -41,6 +41,7 @@ namespace Game.GameManger
                 if (result == DialogResult.Yes)
                 {
                     Counter = 0;
+                    this._scorePanel.TotalScore = 0;
                     Retry();
                 }
                 else { Environment.Exit(1); }
