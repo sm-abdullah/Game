@@ -1,3 +1,7 @@
-Game/obj/*
-*/bin/*
-Game/bin/*
+/Game/obj/*
+/bin/
+/Game/bin/*
+/Game/bin/
+/Game/obj/
+/bin/
+
