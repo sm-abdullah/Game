@@ -48,10 +48,11 @@ namespace Game.ImageBox.Animation
    
         private void SetOpacity(IImageBoxControl imageBoxControl, int opacity)
         {
+            if (imageBoxControl == null) return;
             Image image = imageBoxControl.Image;
             using (Graphics g = Graphics.FromImage(image))
             {
-                Pen pen = new Pen(Color.FromArgb(Opacity, 255, 255, 255), image.Width);
+                Pen pen = new Pen(Color.FromArgb(opacity, 255, 255, 255), image.Width);
                 g.DrawLine(pen, -1, -1, image.Width, image.Height);
                 g.Save();
             }
@@ -61,6 +62,7 @@ namespace Game.ImageBox.Animation
         public void Stop() 
         {
             Opacity = 0;
+            SetOpacity(imageBoxControl, 0);
             timer.Stop();
         }
 
