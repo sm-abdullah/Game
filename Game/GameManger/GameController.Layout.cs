@@ -25,7 +25,8 @@ namespace Game.GameManger
             Images = imageResources.GetImagesFromResources();
             //adjust view
             view.BackColor = System.Drawing.Color.White;
-            view.FormBorderStyle = FormBorderStyle.FixedSingle; 
+            view.FormBorderStyle = FormBorderStyle.FixedSingle;
+            view.MinimizeBox = false;
             view.MaximizeBox = false;
             view.Height = ViewHeight;
             view.Width = ViewWidth;
