@@ -37,7 +37,7 @@ namespace Game.GameManger
             _JapanesePanel.NationalityText = "Japanese";
             _ChinesePanel = new NationalityPanel();
             _ChinesePanel.NationalityText = "Chinese";
-            _ChinesPanel.Location = new Point(ViewWidth - _ChinesePanel.Width, 0);
+            _ChinesePanel.Location = new Point(ViewWidth - _ChinesePanel.Width, 0);
             _KoreanPanel = new NationalityPanel();
             _KoreanPanel.NationalityText = "Korean";
             _KoreanPanel.Location = new Point(0, ViewHeight - (88 + _KoreanPanel.Height));
