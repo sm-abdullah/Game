@@ -11,12 +11,12 @@ namespace Game.GameManger
     {
         public void StartGame()
         {
-            this.imageBoxControl.StartDropping();
+            this._imageBoxControl.StartDropping();
         }
         public void Retry()
         {
-            this.imageBoxControl.Reset();
-            this.imageBoxControl.StartDropping();
+            this._imageBoxControl.Reset();
+            this._imageBoxControl.StartDropping();
             this._scorePanel.TotalScore = 0;
             this._scoreManager.Reset();
             this._gameFlowManager.Reset();
@@ -42,8 +42,8 @@ namespace Game.GameManger
                     }
                     else { Environment.Exit(1); }
                 }
-                this.imageBoxControl.Image = nextPic.Value.Key;
-                this.imageBoxControl.Reset();
+                this._imageBoxControl.Image = nextPic.Value.Key;
+                this._imageBoxControl.Reset();
             }
             catch (Exception ex) 
             {

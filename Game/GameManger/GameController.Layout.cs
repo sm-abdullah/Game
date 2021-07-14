@@ -9,15 +9,15 @@ namespace Game.GameManger
 {
     public partial class GameController
     {
+        private const int ViewHeight = 763;
+        private const int ViewWidth = 995;
         private ScorePanel _scorePanel;
         private Form _view;
-        private NationalityPanel _JapanesePanel;
-        private NationalityPanel _ChinesePanel;
-        private NationalityPanel _KoreanPanel;
-        private NationalityPanel _ThaiPanel;
-        private int ViewHeight = 763;
-        private int ViewWidth = 995;
-        private ImageBoxControl imageBoxControl;
+        private NationalityPanel _japanesePanel;
+        private NationalityPanel _chinesePanel;
+        private NationalityPanel _koreanPanel;
+        private NationalityPanel _thaiPanel;
+        private ImageBoxControl _imageBoxControl;
         private IScoreManager _scoreManager;
         IGameFlowManager _gameFlowManager;
         public GameController(Form view, IGameFlowManager gameFlowManager, IScoreManager scoreManager, IMotionDriver iMotionDriver,IImageAnimation imageAnimation) 
@@ -34,42 +34,42 @@ namespace Game.GameManger
 
             //adjust controls
             _scorePanel = new ScorePanel();
-            _JapanesePanel = new NationalityPanel();
-            _JapanesePanel.Location = new Point(0, 0);
-            _JapanesePanel.NationalityText = "Japanese";
-            _ChinesePanel = new NationalityPanel();
-            _ChinesePanel.NationalityText = "Chinese";
-            _ChinesePanel.Location = new Point(ViewWidth - _ChinesePanel.Width, 0);
-            _KoreanPanel = new NationalityPanel();
-            _KoreanPanel.NationalityText = "Korean";
-            _KoreanPanel.Location = new Point(0, ViewHeight - (88 + _KoreanPanel.Height));
-            _ThaiPanel = new NationalityPanel();
-            _ThaiPanel.NationalityText = "Thai";
-            _ThaiPanel.Location = new Point(ViewWidth - _ChinesePanel.Width, ViewHeight - (88 + _KoreanPanel.Height));
+            _japanesePanel = new NationalityPanel();
+            _japanesePanel.Location = new Point(0, 0);
+            _japanesePanel.NationalityText = "Japanese";
+            _chinesePanel = new NationalityPanel();
+            _chinesePanel.NationalityText = "Chinese";
+            _chinesePanel.Location = new Point(ViewWidth - _chinesePanel.Width, 0);
+            _koreanPanel = new NationalityPanel();
+            _koreanPanel.NationalityText = "Korean";
+            _koreanPanel.Location = new Point(0, ViewHeight - (88 + _koreanPanel.Height));
+            _thaiPanel = new NationalityPanel();
+            _thaiPanel.NationalityText = "Thai";
+            _thaiPanel.Location = new Point(ViewWidth - _chinesePanel.Width, ViewHeight - (88 + _koreanPanel.Height));
 
-            imageBoxControl = new ImageBoxControl(iMotionDriver,imageAnimation);
-            ((System.ComponentModel.ISupportInitialize)(this.imageBoxControl)).BeginInit();
-            this.imageBoxControl.BackColor = System.Drawing.Color.Transparent;
-            this.imageBoxControl.Image = gameFlowManager.GetNext().Value.Key;
-            this.imageBoxControl.Location = new System.Drawing.Point(349, 126);
-            this.imageBoxControl.Name = "imageBoxControl1";
-            this.imageBoxControl.Size = new System.Drawing.Size(274, 198);
-            this.imageBoxControl.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imageBoxControl.TabIndex = 0;
-            this.imageBoxControl.TabStop = false;
-            this.imageBoxControl.ImageReached += new ImageReached(this.imageBoxControl_ImageReached);
+            _imageBoxControl = new ImageBoxControl(iMotionDriver,imageAnimation);
+            ((System.ComponentModel.ISupportInitialize)(this._imageBoxControl)).BeginInit();
+            this._imageBoxControl.BackColor = System.Drawing.Color.Transparent;
+            this._imageBoxControl.Image = gameFlowManager.GetNext().Value.Key;
+            this._imageBoxControl.Location = new System.Drawing.Point(349, 126);
+            this._imageBoxControl.Name = "imageBoxControl1";
+            this._imageBoxControl.Size = new System.Drawing.Size(274, 198);
+            this._imageBoxControl.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this._imageBoxControl.TabIndex = 0;
+            this._imageBoxControl.TabStop = false;
+            this._imageBoxControl.ImageReached += new ImageReached(this.imageBoxControl_ImageReached);
             _view = view;
             Initialze();
 
         }
         public void Initialze() 
         {
-            _view.Controls.Add(imageBoxControl);
+            _view.Controls.Add(_imageBoxControl);
             _view.Controls.Add(_scorePanel);
-            _view.Controls.Add(_JapanesePanel);
-            _view.Controls.Add(_ChinesePanel);
-            _view.Controls.Add(_KoreanPanel);
-            _view.Controls.Add(_ThaiPanel);
+            _view.Controls.Add(_japanesePanel);
+            _view.Controls.Add(_chinesePanel);
+            _view.Controls.Add(_koreanPanel);
+            _view.Controls.Add(_thaiPanel);
            
         }
     }

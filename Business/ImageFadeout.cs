@@ -10,9 +10,9 @@ namespace Game.Business
     /// </summary>
     public class ImageFadeout : IImageAnimation
     {
-        private int Opacity = 0;
+        private int _opacity = 0;
         private Timer timer;
-        IImageBoxControl imageBoxControl;
+        private IImageBoxControl _imageBoxControl;
         public ImageFadeout() 
         {
 
@@ -25,22 +25,22 @@ namespace Game.Business
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            if (Opacity < 120)
+            if (_opacity < 120)
             {
-                SetOpacity(imageBoxControl, Opacity);
-                Opacity += 2;
-                Console.WriteLine(Opacity);
+                SetOpacity(_imageBoxControl, _opacity);
+                _opacity += 2;
+                Console.WriteLine(_opacity);
             }
             else
             {
-                Opacity = 0;
+                _opacity = 0;
                 timer.Stop();
             }
 
         }
         public  void Start(IImageBoxControl imageBoxControl)
         {
-            this.imageBoxControl = imageBoxControl;
+            this._imageBoxControl = imageBoxControl;
             timer.Start();
         }
    
@@ -59,8 +59,8 @@ namespace Game.Business
         }
         public void Stop() 
         {
-            Opacity = 0;
-            SetOpacity(imageBoxControl, 0);
+            _opacity = 0;
+            SetOpacity(_imageBoxControl, 0);
             timer.Stop();
         }
 
@@ -70,7 +70,7 @@ namespace Game.Business
             timer.Tick -= Timer_Tick;
             //stop timer
             timer.Stop();
-            imageBoxControl = null;
+            _imageBoxControl = null;
             timer.Dispose();
         }
     }

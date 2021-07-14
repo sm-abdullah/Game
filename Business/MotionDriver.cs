@@ -6,80 +6,80 @@ namespace Game.Business
 {
     public class MotionDriver : IMotionDriver
     {
-        private Timer timer;
-        private int speed = 6;
-        private IImageBoxControl control;
-        private ImageDirection direction;
-        private const int delta = 2;
+        private Timer _timer;
+        private int _speed = 6;
+        private IImageBoxControl _control;
+        private ImageDirection _direction;
+        private const int _delta = 2;
         public event ImageReached ImageReached;
         public MotionDriver()
         {
-            timer = new Timer();
-            timer.Interval = speed;
-            timer.Tick += Timer_Tick;
+            _timer = new Timer();
+            _timer.Interval = _speed;
+            _timer.Tick += Timer_Tick;
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            if (direction == ImageDirection.TopBottom)
+            if (_direction == ImageDirection.TopBottom)
             {
-                if (this.control.Parent.Height > this.control.Top + this.control.Height)
+                if (this._control.Parent.Height > this._control.Top + this._control.Height)
                 {
-                    this.control.Top += delta;
+                    this._control.Top += _delta;
                 }
               
             }
-            else if (direction == ImageDirection.LeftTop)
+            else if (_direction == ImageDirection.LeftTop)
             {
-                this.control.Top -= delta;
-                this.control.Left -= delta;
+                this._control.Top -= _delta;
+                this._control.Left -= _delta;
 
 
             }
-            else if (direction == ImageDirection.LeftBottom)
+            else if (_direction == ImageDirection.LeftBottom)
             {
-                this.control.Top += delta;
-                this.control.Left -= delta;
+                this._control.Top += _delta;
+                this._control.Left -= _delta;
 
             }
-            else if (direction == ImageDirection.RightBottom)
+            else if (_direction == ImageDirection.RightBottom)
             {
-                this.control.Top += delta;
-                this.control.Left += delta;
+                this._control.Top += _delta;
+                this._control.Left += _delta;
             }
-            else if (direction == ImageDirection.RightTop)
+            else if (_direction == ImageDirection.RightTop)
             {
-                this.control.Top -= delta;
-                this.control.Left += delta;
+                this._control.Top -= _delta;
+                this._control.Left += _delta;
             }
 
-            if (this.control.Top < 1 || this.control.Left < 1
-                || (this.control.Top + this.control.Height >= this.control.Parent.Height)
-                || (this.control.Width + this.control.Left >= this.control.Parent.Width))
+            if (this._control.Top < 1 || this._control.Left < 1
+                || (this._control.Top + this._control.Height >= this._control.Parent.Height)
+                || (this._control.Width + this._control.Left >= this._control.Parent.Width))
             {
-                this.timer.Stop();
-                ImageReached?.Invoke(control, direction);
+                this._timer.Stop();
+                ImageReached?.Invoke(_control, _direction);
             }
 
         }
 
         public void PlayAnimation(ImageDirection direction, IImageBoxControl control)
         {
-            this.control = control;
-            this.direction = direction;
-            timer.Start();
+            this._control = control;
+            this._direction = direction;
+            _timer.Start();
 
         }
         public void Pause()
         {
-            timer.Stop();
+            _timer.Stop();
         }
          
         public void Dispose()
         {
-            this.timer.Tick -= Timer_Tick;
-            timer.Dispose();
-            this.control = null;
+            this._timer.Tick -= Timer_Tick;
+            _timer.Dispose();
+            this._control = null;
         }
     }
 }

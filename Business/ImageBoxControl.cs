@@ -15,14 +15,15 @@ namespace Game.Business
     public delegate void DirectionChanged(object sender, ImageDirection direction);
     public class ImageBoxControl : PictureBox, IImageBoxControl
     {
-        private Point startMouseLocation = Point.Empty;
-        private Point startImageLocation = Point.Empty;
-        private bool isDragging = false;
+        private Point _startMouseLocation = Point.Empty;
+        private Point _startImageLocation = Point.Empty;
+        private bool _isDragging = false;
+        private bool _isDecesionMade;
+        private IImageAnimation _imageAnimation;
+        private IMotionDriver _motionDriver;
         public event ImageReached ImageReached;
-        private IImageAnimation ImageAnimation;
-        public IMotionDriver MotionDriver;
         public event DirectionChanged Direction_Changed;
-        private bool IsDecesionMade;
+      
 
         /// <summary>
         /// Main constructor that requires Animation and modition driver
@@ -32,10 +33,10 @@ namespace Game.Business
         public ImageBoxControl(IMotionDriver motionDriver, IImageAnimation imageAnimation)
         {
             SetStyle(ControlStyles.Opaque, true);
-            ImageAnimation = imageAnimation;
-            MotionDriver = motionDriver;
-            MotionDriver.ImageReached += MotionDriver_ImageReached;
-            IsDecesionMade = false;
+            _imageAnimation = imageAnimation;
+            _motionDriver = motionDriver;
+            _motionDriver.ImageReached += MotionDriver_ImageReached;
+            _isDecesionMade = false;
             this.Cursor = Cursors.Hand;
 
         }
@@ -52,27 +53,27 @@ namespace Game.Business
 
         public void StartDropping()
         {
-            MotionDriver.PlayAnimation(ImageDirection.TopBottom, this);
+            _motionDriver.PlayAnimation(ImageDirection.TopBottom, this);
         }
 
         protected override void InitLayout()
         {
             base.InitLayout();
-            startImageLocation = this.Location;
+            _startImageLocation = this.Location;
         }
 
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
-            if (!IsDecesionMade)
+            if (!_isDecesionMade)
             {
-                MotionDriver.Pause();
+                _motionDriver.Pause();
                 base.OnMouseDown(e);
                 if (e.Button == MouseButtons.Left)
                 {
-                    isDragging = true;
-                    startMouseLocation = new Point(e.X, e.Y);
-                    startImageLocation = this.Location;
+                    _isDragging = true;
+                    _startMouseLocation = new Point(e.X, e.Y);
+                    _startImageLocation = this.Location;
                 }
             }
 
@@ -83,52 +84,52 @@ namespace Game.Business
             base.OnMouseUp(e);
 
             var endLocation = this.Location;
-            var distance = Math.Sqrt((Math.Pow(startImageLocation.X - endLocation.X, 2) + Math.Pow(startImageLocation.Y - endLocation.Y, 2)));
+            var distance = Math.Sqrt((Math.Pow(_startImageLocation.X - endLocation.X, 2) + Math.Pow(_startImageLocation.Y - endLocation.Y, 2)));
             // if user pan more than 20 pix then change direction
-            if (distance >= 20 && endLocation.X < startImageLocation.X && endLocation.Y < startImageLocation.Y)
+            if (distance >= 20 && endLocation.X < _startImageLocation.X && endLocation.Y < _startImageLocation.Y)
             {
                 Direction_Changed?.Invoke(this, ImageDirection.LeftTop);
-                MotionDriver.PlayAnimation(ImageDirection.LeftTop, this);
+                _motionDriver.PlayAnimation(ImageDirection.LeftTop, this);
 
 
             }
-            else if (distance >= 20 && endLocation.X > startImageLocation.X && endLocation.Y < startImageLocation.Y)
+            else if (distance >= 20 && endLocation.X > _startImageLocation.X && endLocation.Y < _startImageLocation.Y)
             {
                 Direction_Changed?.Invoke(this, ImageDirection.RightTop);
-                MotionDriver.PlayAnimation(ImageDirection.RightTop, this);
+                _motionDriver.PlayAnimation(ImageDirection.RightTop, this);
             }
-            else if (distance >= 20 && endLocation.X > startImageLocation.X && endLocation.Y > startImageLocation.Y)
+            else if (distance >= 20 && endLocation.X > _startImageLocation.X && endLocation.Y > _startImageLocation.Y)
             {
                 Direction_Changed?.Invoke(this, ImageDirection.RightBottom);
-                MotionDriver.PlayAnimation(ImageDirection.RightBottom, this);
+                _motionDriver.PlayAnimation(ImageDirection.RightBottom, this);
 
             }
-            else if (distance >= 20 && endLocation.X < startImageLocation.X && endLocation.Y > startImageLocation.Y)
+            else if (distance >= 20 && endLocation.X < _startImageLocation.X && endLocation.Y > _startImageLocation.Y)
             {
                 Direction_Changed?.Invoke(this, ImageDirection.LeftBottom);
-                MotionDriver.PlayAnimation(ImageDirection.LeftBottom, this);
+                _motionDriver.PlayAnimation(ImageDirection.LeftBottom, this);
             }
             else
             {
-                MotionDriver.PlayAnimation(ImageDirection.TopBottom, this);
+                _motionDriver.PlayAnimation(ImageDirection.TopBottom, this);
             }
-            ImageAnimation.Start(this);
-            startImageLocation = endLocation;
-            isDragging = false;
-            IsDecesionMade = true;
+            _imageAnimation.Start(this);
+            _startImageLocation = endLocation;
+            _isDragging = false;
+            _isDecesionMade = true;
             this.Cursor = Cursors.Arrow ;
         }
 
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
-            if (startMouseLocation.X != e.X || startMouseLocation.Y != e.Y)
+            if (_startMouseLocation.X != e.X || _startMouseLocation.Y != e.Y)
             {
-                if (isDragging)
+                if (_isDragging)
                 {
                     Point newlocation = this.Location;
-                    newlocation.X += e.X - startMouseLocation.X;
-                    newlocation.Y += e.Y - startMouseLocation.Y;
+                    newlocation.X += e.X - _startMouseLocation.X;
+                    newlocation.Y += e.Y - _startMouseLocation.Y;
                     this.Location = newlocation;
                 }
             }
@@ -138,18 +139,18 @@ namespace Game.Business
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);
-            this.ImageAnimation.Dispose();
-            this.MotionDriver.Dispose();
-            this.MotionDriver = null;
-            this.ImageAnimation = null;
+            this._imageAnimation.Dispose();
+            this._motionDriver.Dispose();
+            this._motionDriver = null;
+            this._imageAnimation = null;
         }
 
         public void Reset()
         {
-            IsDecesionMade = false;
+            _isDecesionMade = false;
             this.Cursor = Cursors.Hand;
-            MotionDriver.PlayAnimation(ImageDirection.TopBottom, this);
-            ImageAnimation.Stop();
+            _motionDriver.PlayAnimation(ImageDirection.TopBottom, this);
+            _imageAnimation.Stop();
             this.Location = new Point(354, 126);
         }
     }
