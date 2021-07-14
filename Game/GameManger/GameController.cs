@@ -1,6 +1,5 @@
 ﻿using Entites;
 using System;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace Game.GameManger
@@ -23,34 +22,43 @@ namespace Game.GameManger
         }
         private void imageBoxControl_ImageReached(IImageBoxControl sender, ImageDirection direction)
         {
-            var item = _gameFlowManager.GetMostRecent();
-            if ((direction == ImageDirection.LeftBottom && item.Value.Value == Nationality.Korean) ||
-                 (direction == ImageDirection.LeftTop && item.Value.Value == Nationality.Japnaies) ||
-                 (direction == ImageDirection.RightTop && item.Value.Value == Nationality.Chines) ||
-                  (direction == ImageDirection.RightBottom && item.Value.Value == Nationality.Thai)
-                )
+            try
             {
-                this._scorePanel.TotalScore += 20;
-            }
-            else if (direction != ImageDirection.TopBottom)
-            {
-                this._scorePanel.TotalScore -= 5;
-            }
 
-            var nextPic = _gameFlowManager.GetNext();
-            if (nextPic == null)
-            {
-                var result = MessageBox.Show(string.Format("Your Total Score : {0}", this._scorePanel.TotalScore), "Want to play again?", buttons: MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
+
+                var item = _gameFlowManager.GetMostRecent();
+                if ((direction == ImageDirection.LeftBottom && item.Value.Value == Nationality.Korean) ||
+                     (direction == ImageDirection.LeftTop && item.Value.Value == Nationality.Japnaies) ||
+                     (direction == ImageDirection.RightTop && item.Value.Value == Nationality.Chines) ||
+                      (direction == ImageDirection.RightBottom && item.Value.Value == Nationality.Thai)
+                    )
                 {
-
-                    Retry();
-                    nextPic = _gameFlowManager.GetNext();
+                    this._scorePanel.TotalScore += 20;
                 }
-                else { Environment.Exit(1); }
+                else if (direction != ImageDirection.TopBottom)
+                {
+                    this._scorePanel.TotalScore -= 5;
+                }
+
+                var nextPic = _gameFlowManager.GetNext();
+                if (nextPic == null)
+                {
+                    var result = MessageBox.Show(string.Format("Your Total Score : {0}", this._scorePanel.TotalScore), "Want to play again?", buttons: MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+
+                        Retry();
+                        nextPic = _gameFlowManager.GetNext();
+                    }
+                    else { Environment.Exit(1); }
+                }
+                this.imageBoxControl.Image = nextPic.Value.Key;
+                this.imageBoxControl.Reset();
             }
-            this.imageBoxControl.Image = nextPic.Value.Key;
-            this.imageBoxControl.Reset();
+            catch (Exception ex) 
+            {
+                Console.WriteLine($"an error has occured EX:{ex.Message}");
+            }
         }
     }
 }

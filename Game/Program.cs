@@ -15,21 +15,28 @@ namespace Game
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            IImageResources repo = new ImageResources();
-            const int maxImages = 11;
-            IGameFlowManager gameFlowManger = new GameFlowManager(repo, maxImages);
-            // ibelive win form is not best choice to build games.
-            // i am still using to just to show what i can do better
-            // i could have used Designer form
-            // using dumb view is show just to show how flexible it is.
-            var view = new Form();
-            var imageAnimation = new ImageFadeout();
-            var imotionDriver = new MotionDriver();
-            var controller = new GameController(view, gameFlowManger, imotionDriver, imageAnimation);
-            controller.StartGame();
-            Application.Run(view);
+            try
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                IImageResources repo = new ImageResources();
+                const int maxImages = 11;
+                IGameFlowManager gameFlowManger = new GameFlowManager(repo, maxImages);
+                // ibelive win form is not best choice to build games.
+                // i am still using to just to show what i can do better
+                // i could have used Designer form
+                // using dumb view is show just to show how flexible it is.
+                var view = new Form();
+                var imageAnimation = new ImageFadeout();
+                var imotionDriver = new MotionDriver();
+                var controller = new GameController(view, gameFlowManger, imotionDriver, imageAnimation);
+                controller.StartGame();
+                Application.Run(view);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Fata error occured EX: {ex.Message}");
+            }
         }
     }
 }

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.Drawing;
 using System.Windows.Forms;
-using Entites;
 using Game.Views;
 using Game.Business;
 using Business;
-using System.Linq;
 
 namespace Game.GameManger
 {
