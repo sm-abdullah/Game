@@ -1,6 +1,7 @@
 ﻿using Game.GameManger;
 using System.Collections.Generic;
 using System.Drawing;
+using Game.DomainEntities;
 
 namespace Game.ImageRepo
 {

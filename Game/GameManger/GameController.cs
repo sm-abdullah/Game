@@ -1,4 +1,4 @@
-﻿using Game.ImageBox;
+﻿using Game.DomainEntities;
 using System;
 using System.Linq;
 using System.Windows.Forms;

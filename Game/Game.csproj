@@ -45,32 +45,34 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\GameFlowManager.cs" />
     <Compile Include="GameManger\GameController.cs" />
     <Compile Include="GameManger\GameController.Layout.cs" />
-    <Compile Include="GameManger\Nationality.cs" />
-    <Compile Include="GameManger\NationalityPanel.cs">
+    <Compile Include="Business\IGameFlowManager.cs" />
+    <Compile Include="DomainEntities\Nationality.cs" />
+    <Compile Include="Views\NationalityPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="GameManger\ScorePanel.cs">
+    <Compile Include="Views\ScorePanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ImageBox\Animation\IImageAnimation.cs" />
-    <Compile Include="ImageBox\Animation\ImageFadeout.cs" />
-    <Compile Include="ImageBox\IImageBoxControl.cs" />
-    <Compile Include="ImageBox\ImageBoxControl.cs">
+    <Compile Include="Business\IImageAnimation.cs" />
+    <Compile Include="Business\ImageFadeout.cs" />
+    <Compile Include="DomainEntities\IImageBoxControl.cs" />
+    <Compile Include="Business\ImageBoxControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ImageBox\ImageDirection.cs" />
-    <Compile Include="ImageBox\IMotionDriver.cs" />
-    <Compile Include="ImageBox\MotionDriver.cs" />
+    <Compile Include="DomainEntities\ImageDirection.cs" />
+    <Compile Include="Business\IMotionDriver.cs" />
+    <Compile Include="Business\MotionDriver.cs" />
     <Compile Include="ImageRepo\IImageResources.cs" />
     <Compile Include="ImageRepo\ImageResources.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="GameManger\NationalityPanel.resx">
+    <EmbeddedResource Include="Views\NationalityPanel.resx">
       <DependentUpon>NationalityPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GameManger\ScorePanel.resx">
+    <EmbeddedResource Include="Views\ScorePanel.resx">
       <DependentUpon>ScorePanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

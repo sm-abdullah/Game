@@ -1,10 +1,8 @@
 ﻿using Game.GameManger;
-using Game.ImageBox;
-using Game.ImageBox.Animation;
 using Game.ImageRepo;
 using System;
 using System.Windows.Forms;
-
+using Game.Business;
 namespace Game
 {
     static class Program
@@ -18,6 +16,10 @@ namespace Game
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             IImageResources repo = new ImageResources();
+            // ibelive win form is not best choice to build games.
+            // i am still using to just to show what i can do better
+            // i could have used Designer form
+            // using dumb view is show just to show how flexible it is.
             var view = new Form();
             var imageAnimation = new ImageFadeout();
             var imotionDriver = new MotionDriver();

@@ -1,9 +1,11 @@
-﻿using Game.ImageBox;
-using Game.ImageRepo;
+﻿using Game.ImageRepo;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using Game.DomainEntities;
+using Game.Views;
+using Game.Business;
 
 namespace Game.GameManger
 {
@@ -56,7 +58,7 @@ namespace Game.GameManger
             this.imageBoxControl.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageBoxControl.TabIndex = 0;
             this.imageBoxControl.TabStop = false;
-            this.imageBoxControl.ImageReached += new Game.ImageBox.ImageReached(this.imageBoxControl_ImageReached);
+            this.imageBoxControl.ImageReached += new ImageReached(this.imageBoxControl_ImageReached);
             _view = view;
             Initialze();
 

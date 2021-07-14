@@ -1,4 +1,4 @@
-﻿using Game.GameManger;
+﻿using Game.DomainEntities;
 using System.Collections.Generic;
 using System.Drawing;
 
