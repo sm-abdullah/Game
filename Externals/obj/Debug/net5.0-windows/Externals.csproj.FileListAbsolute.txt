@@ -1,0 +1,17 @@
+C:\Users\user\source\repos\Game\Externals\obj\Debug\net5.0-windows\Externals.csprojAssemblyReference.cache
+C:\Users\user\source\repos\Game\Externals\obj\Debug\net5.0-windows\Externals.Properties.Resources.resources
+C:\Users\user\source\repos\Game\Externals\obj\Debug\net5.0-windows\Externals.csproj.GenerateResource.cache
+C:\Users\user\source\repos\Game\Externals\obj\Debug\net5.0-windows\Externals.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\source\repos\Game\Externals\obj\Debug\net5.0-windows\Externals.AssemblyInfoInputs.cache
+C:\Users\user\source\repos\Game\Externals\obj\Debug\net5.0-windows\Externals.AssemblyInfo.cs
+C:\Users\user\source\repos\Game\Externals\obj\Debug\net5.0-windows\Externals.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\Game\Externals\bin\Debug\net5.0-windows\Externals.deps.json
+C:\Users\user\source\repos\Game\Externals\bin\Debug\net5.0-windows\Externals.dll
+C:\Users\user\source\repos\Game\Externals\bin\Debug\net5.0-windows\ref\Externals.dll
+C:\Users\user\source\repos\Game\Externals\bin\Debug\net5.0-windows\Externals.pdb
+C:\Users\user\source\repos\Game\Externals\bin\Debug\net5.0-windows\Entites.dll
+C:\Users\user\source\repos\Game\Externals\bin\Debug\net5.0-windows\Entites.pdb
+C:\Users\user\source\repos\Game\Externals\obj\Debug\net5.0-windows\Externals.csproj.CopyComplete
+C:\Users\user\source\repos\Game\Externals\obj\Debug\net5.0-windows\Externals.dll
+C:\Users\user\source\repos\Game\Externals\obj\Debug\net5.0-windows\ref\Externals.dll
+C:\Users\user\source\repos\Game\Externals\obj\Debug\net5.0-windows\Externals.pdb

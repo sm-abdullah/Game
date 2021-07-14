@@ -1,18 +1,17 @@
-﻿using Game.ImageRepo;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using Game.DomainEntities;
+using Entites;
 using Game.Views;
 using Game.Business;
+using Business;
+using System.Linq;
 
 namespace Game.GameManger
 {
     public partial class GameController
     {
-        Dictionary<Image, Nationality> Images;
-        private int Counter = 0;
         private ScorePanel _scorePanel;
         private Form _view;
         private NationalityPanel _JapanesePanel;
@@ -22,9 +21,10 @@ namespace Game.GameManger
         private int ViewHeight = 763;
         private int ViewWidth = 995;
         private ImageBoxControl imageBoxControl;
-        public GameController(Form view, IImageResources imageResources, IMotionDriver iMotionDriver,IImageAnimation imageAnimation) 
+        IGameFlowManager _gameFlowManager;
+        public GameController(Form view, IGameFlowManager gameFlowManager, IMotionDriver iMotionDriver,IImageAnimation imageAnimation) 
         {
-            Images = imageResources.GetImagesFromResources();
+            _gameFlowManager = gameFlowManager;
             //adjust view
             view.BackColor = System.Drawing.Color.White;
             view.FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -51,7 +51,7 @@ namespace Game.GameManger
             imageBoxControl = new ImageBoxControl(iMotionDriver,imageAnimation);
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxControl)).BeginInit();
             this.imageBoxControl.BackColor = System.Drawing.Color.Transparent;
-            this.imageBoxControl.Image = global::Game.Properties.Resources.thai03;
+            this.imageBoxControl.Image = gameFlowManager.GetNext().Value.Key;
             this.imageBoxControl.Location = new System.Drawing.Point(349, 126);
             this.imageBoxControl.Name = "imageBoxControl1";
             this.imageBoxControl.Size = new System.Drawing.Size(274, 198);

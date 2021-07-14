@@ -1,0 +1,9 @@
+C:\Users\user\source\repos\Game\Business\obj\Debug\Business.csprojAssemblyReference.cache
+C:\Users\user\source\repos\Game\Business\obj\Debug\Business.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\Game\Business\bin\Debug\Business.dll
+C:\Users\user\source\repos\Game\Business\bin\Debug\Business.pdb
+C:\Users\user\source\repos\Game\Business\bin\Debug\Entities.dll
+C:\Users\user\source\repos\Game\Business\bin\Debug\Entities.pdb
+C:\Users\user\source\repos\Game\Business\obj\Debug\Business.csproj.CopyComplete
+C:\Users\user\source\repos\Game\Business\obj\Debug\Business.dll
+C:\Users\user\source\repos\Game\Business\obj\Debug\Business.pdb

@@ -1,0 +1,13 @@
+C:\Users\user\source\repos\Game\External\obj\Debug\External.csprojAssemblyReference.cache
+C:\Users\user\source\repos\Game\External\obj\Debug\External.Properties.Resources.resources
+C:\Users\user\source\repos\Game\External\obj\Debug\External.csproj.GenerateResource.cache
+C:\Users\user\source\repos\Game\External\obj\Debug\External.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\Game\External\bin\Debug\External.dll
+C:\Users\user\source\repos\Game\External\bin\Debug\External.pdb
+C:\Users\user\source\repos\Game\External\bin\Debug\Entities.dll
+C:\Users\user\source\repos\Game\External\bin\Debug\Entities.pdb
+C:\Users\user\source\repos\Game\External\obj\Debug\External.csproj.CopyComplete
+C:\Users\user\source\repos\Game\External\obj\Debug\External.dll
+C:\Users\user\source\repos\Game\External\obj\Debug\External.pdb
+C:\Users\user\source\repos\Game\External\bin\Debug\Business.dll
+C:\Users\user\source\repos\Game\External\bin\Debug\Business.pdb
