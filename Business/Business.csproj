@@ -44,7 +44,9 @@
     </Compile>
     <Compile Include="ImageFadeout.cs" />
     <Compile Include="IMotionDriver.cs" />
+    <Compile Include="IScoreManager.cs" />
     <Compile Include="MotionDriver.cs" />
+    <Compile Include="ScoreManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entities\Entities.csproj">

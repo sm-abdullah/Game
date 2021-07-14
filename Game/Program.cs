@@ -29,7 +29,8 @@ namespace Game
                 var view = new Form();
                 var imageAnimation = new ImageFadeout();
                 var imotionDriver = new MotionDriver();
-                var controller = new GameController(view, gameFlowManger, imotionDriver, imageAnimation);
+                var iScoreManager = new ScoreManager();
+                var controller = new GameController(view, gameFlowManger, iScoreManager, imotionDriver, imageAnimation);
                 controller.StartGame();
                 Application.Run(view);
             }

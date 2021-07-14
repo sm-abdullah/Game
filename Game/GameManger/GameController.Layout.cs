@@ -18,9 +18,11 @@ namespace Game.GameManger
         private int ViewHeight = 763;
         private int ViewWidth = 995;
         private ImageBoxControl imageBoxControl;
+        private IScoreManager _scoreManager;
         IGameFlowManager _gameFlowManager;
-        public GameController(Form view, IGameFlowManager gameFlowManager, IMotionDriver iMotionDriver,IImageAnimation imageAnimation) 
+        public GameController(Form view, IGameFlowManager gameFlowManager, IScoreManager scoreManager, IMotionDriver iMotionDriver,IImageAnimation imageAnimation) 
         {
+            _scoreManager = scoreManager;
             _gameFlowManager = gameFlowManager;
             //adjust view
             view.BackColor = System.Drawing.Color.White;

@@ -18,7 +18,8 @@ namespace Game.GameManger
             this.imageBoxControl.Reset();
             this.imageBoxControl.StartDropping();
             this._scorePanel.TotalScore = 0;
-            _gameFlowManager.Reset();
+            this._scoreManager.Reset();
+            this._gameFlowManager.Reset();
         }
         private void imageBoxControl_ImageReached(IImageBoxControl sender, ImageDirection direction)
         {
@@ -27,18 +28,7 @@ namespace Game.GameManger
 
 
                 var item = _gameFlowManager.GetMostRecent();
-                if ((direction == ImageDirection.LeftBottom && item.Value.Value == Nationality.Korean) ||
-                     (direction == ImageDirection.LeftTop && item.Value.Value == Nationality.Japnaies) ||
-                     (direction == ImageDirection.RightTop && item.Value.Value == Nationality.Chines) ||
-                      (direction == ImageDirection.RightBottom && item.Value.Value == Nationality.Thai)
-                    )
-                {
-                    this._scorePanel.TotalScore += 20;
-                }
-                else if (direction != ImageDirection.TopBottom)
-                {
-                    this._scorePanel.TotalScore -= 5;
-                }
+                this._scorePanel.TotalScore = _scoreManager.ManageScore(direction, item.Value.Value);
 
                 var nextPic = _gameFlowManager.GetNext();
                 if (nextPic == null)
