@@ -22,7 +22,7 @@ namespace Game
                 IImageResources repo = new ImageResources();
                 const int maxImages = 11;
                 IGameFlowManager gameFlowManger = new GameFlowManager(repo, maxImages);
-                // ibelive win form is not best choice to build games.
+                // i belive win form is not best choice to build games.
                 // i am still using to just to show what i can do better
                 // i could have used Designer form
                 // using dumb view is show just to show how flexible it is.
